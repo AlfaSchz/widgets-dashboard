@@ -1,0 +1,19 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+<form class="form-signin text-center" method="POST" action="{{ path_for('signup') }}">
+  <h1 class="h3 mb-3 font-weight-normal">Sign in or create an account!</h1>
+    <div class="form-grup">
+      <label for="inputName" class="sr-only">Name</label>
+      <input type="text" name="name" id="inputName" class="form-control {{ errors.name ? ' is-invalid' : '' }}" placeholder="Name" required="" autofocus="">
+      <div class="help-block text-danger">{{ errors.name ? errors.name : '&nbsp;'  }}</div>
+    </div>
+    <div class="form-grup">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="password" id="inputPassword" class="form-control {{ errors.password ? ' is-invalid' : '' }}" placeholder="Password" required="">
+      <div class="help-block text-danger">{{ errors.password ? errors.password : '&nbsp;' }}</span>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in/up</button>
+    {{ csrf.field | raw }}
+</form>
+{% endblock %}
