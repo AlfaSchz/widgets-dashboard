@@ -1,0 +1,17 @@
+{% extends 'templates/app.twig' %}
+
+{% block content %}
+<h1 class="display-4">Widgets Dashboard</h1>
+<div class="card-columns">
+  <div id="VueApp">
+    <saved-widgets widgets='{{ widgets }}'>
+    </saved-widgets>
+    <component v-bind:is="currentView">
+      <!-- component changes when vm.currentView changes! -->
+    </component>
+    <div id="csfr">
+    {{ csrf.field | raw }}
+    </div>
+  </div>
+</div>
+{% endblock %}
