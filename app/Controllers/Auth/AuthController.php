@@ -10,7 +10,12 @@ class AuthController extends Controller
 {
   public function getSignUp($req, $res)
   {
-    return $this->container->view->render($res, 'auth/signup.twig');
+    if (!isset($_SESSION['user'])) {
+        return $this->container->view->render($res, 'auth/signup.twig');
+    } else {
+      return $res->withRedirect($this->container->router->pathFor('home'));
+    }
+
   }
 
   public function getSignOut($req, $res)
